@@ -1,0 +1,618 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Arial', sans-serif;
+}
+
+body {
+    background: #0D1321;
+    color: #E5E7EB;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    line-height: 1.5;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.visible {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.4s ease-in-out;
+    background: linear-gradient(145deg, #0D1321 0%, #1F2A44 80%);
+}
+
+/* Canvas Styling */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.65;
+    filter: blur(0.8px);
+}
+
+/* Interface Containers */
+.boot-interface, .login-interface, .start-interface, .selection-interface,
+.transition-interface, .instruction-interface, .quote-interface, .analysis-interface,
+.response-interface, .tone-interface, .reflection-interface,
+.pressure-interface, .value-interface, .comparison-interface,
+.well-done-interface, .role-interface, .congrats-interface {
+    z-index: 1;
+    background: rgba(31, 42, 68, 0.92);
+    border: 1px solid #374151;
+    border-radius: 14px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    max-width: 900px;
+    width: 90%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for Interfaces */
+section.visible > div:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Typography */
+h1 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    color: #3B82F6;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.015em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+h1 i {
+    color: #10B981; /* Green for icons */
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: clamp(1.6rem, 2.2vw, 2rem);
+    color: #93C5FD;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+h2 i {
+    color: #10B981;
+    font-size: 1.2rem;
+}
+
+h3 {
+    font-size: clamp(1.4rem, 1.9vw, 1.7rem);
+    color: #10B981;
+    font-weight: 500;
+}
+
+p, blockquote {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #E5E7EB;
+}
+
+/* Buttons */
+.action-btn {
+    padding: 0.9rem 2.5rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.action-btn:hover {
+    background: #60A5FA;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* System Boot Screen */
+.boot-interface {
+    border-color: #10B981;
+}
+
+/* Login Screen (Terminal Style) */
+.login-interface {
+    padding: 2rem;
+}
+
+.login-header {
+    margin-bottom: 1.5rem;
+}
+
+.login-terminal {
+    background: #111827;
+    border: 1px solid #4B5563;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-output {
+    color: #9CA3AF;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+}
+
+.terminal-field {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+.prompt {
+    color: #10B981;
+    font-weight: bold;
+}
+
+.input {
+    color: #E5E7EB;
+}
+
+.status {
+    margin-top: 1rem;
+    color: #F59E0B;
+    font-style: italic;
+}
+
+/* Experience Start */
+.start-interface .countdown {
+    font-size: 2.5rem;
+    color: #10B981;
+    margin: 1.5rem 0;
+    font-weight: 600;
+}
+
+.system-info {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.95rem;
+    color: #6B7280;
+    background: rgba(31, 42, 68, 0.85);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+/* Timer Styling */
+.timer {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.95rem;
+    color: #F59E0B;
+    background: rgba(31, 42, 68, 0.85);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+/* Character Selection */
+.selection-interface .character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.character-card {
+    background: #1F2A44;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+    transform: scale(1.05);
+    border-color: #3B82F6;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+}
+
+.character-card img {
+    width: 100%;
+    max-width: 160px;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #374151;
+}
+
+.character-card h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* Character Transition */
+.transition-interface p {
+    margin-top: 0.75rem;
+    color: #93C5FD;
+}
+
+/* Instruction Screen */
+.instruction-interface {
+    padding: 3rem;
+}
+
+.instruction-interface p {
+    margin: 1.5rem 0;
+    color: #93C5FD;
+}
+
+/* Quote Chambers (Enhanced Experience) */
+.quote-chamber .quote-interface blockquote {
+    font-style: italic;
+    padding: 1.5rem;
+    border-left: 6px solid #3B82F6;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.analysis-interface .analysis-container {
+    background: #1F2A44;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.25rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-interface .word-display {
+    margin-bottom: 1rem;
+}
+
+.analysis-interface .meaning-arrows .breakdown-sentence {
+    font-size: 1.1rem;
+    color: #F59E0B;
+    padding: 0.75rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 6px;
+}
+
+.response-interface textarea {
+    width: 100%;
+    min-height: 170px;
+    padding: 1.25rem;
+    background: #1F2A44;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    color: #E5E7EB;
+    resize: vertical;
+    margin-bottom: 1.5rem;
+    font-size:1rem;
+    transition: border-color 0.3s ease;
+}
+
+.response-interface textarea:focus {
+    border-color: #3B82F6;
+    outline: none;
+}
+
+/* Tone Dissection */
+.tone-interface blockquote {
+    margin: 1.25rem 0;
+    padding: 1.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 6px solid #10B981;
+    border-radius: 8px;
+}
+
+.tone-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.tone-controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    color: #93C5FD;
+}
+
+.tone-slider {
+    width: 100%;
+    max-width: 340px;
+    height: 5px;
+    background: #374151;
+    border-radius: 2.5px;
+    accent-color: #10B981;
+    cursor: pointer;
+}
+
+.tone-interface textarea {
+    width: 100%;
+    min-height: 170px;
+    padding: 1.25rem;
+    background: #1F2A44;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    color: #E5E7EB;
+    resize: vertical;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+}
+
+.tone-interface textarea:focus {
+    border-color: #3B82F6;
+    outline: none;
+}
+
+/* Tone Reflection */
+.reflection-interface .reflection-content {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 8px;
+    color: #F59E0B;
+}
+
+.reflection-interface textarea {
+    width: 100%;
+    min-height: 170px;
+    padding: 1.25rem;
+    background: #1F2A44;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    color: #E5E7EB;
+    resize: vertical;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+}
+
+.reflection-interface textarea:focus {
+    border-color: #3B82F6;
+    outline: none;
+}
+
+/* Caste Pressure (Numbered Slots) */
+.pressure-interface .caste-scenario {
+    margin: 1.25rem 0;
+    color: #93C5FD;
+}
+
+.pressure-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.pressure-items, .drop-zones {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pressure-item, .drop-slot {
+    padding: 0.9rem 1.75rem;
+    background: #1F2A44;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    cursor: move;
+    font-size: 1rem;
+    min-width: 100px;
+    text-align: center;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.drop-slot {
+    background: rgba(16, 185, 129, 0.1);
+    border-style: dashed;
+}
+
+.pressure-item:hover, .drop-slot.drag-over {
+    background: #10B981;
+    border-color: #10B981;
+    color: #0D1321;
+    transform: scale(1.03);
+}
+
+.pressure-interface .pressure-input {
+    width: 100%;
+    min-height: 170px;
+    padding: 1.25rem;
+    background: #1F2A44;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    color: #E5E7EB;
+    resize: vertical;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+}
+
+.pressure-interface .pressure-input:focus {
+    border-color: #3B82F6;
+    outline: none;
+}
+
+/* Value Hierarchy (Numbered Slots and Context) */
+.value-interface .character-name {
+    margin: 1.25rem 0;
+    color: #93C5FD;
+}
+
+.value-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.value-items, .drop-zones {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.value-item, .drop-slot {
+    padding: 0.9rem 1.75rem;
+    background: #1F2A44;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    cursor: move;
+    font-size: 1rem;
+    min-width: 100px;
+    text-align: center;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.drop-slot {
+    background: rgba(59, 130, 246, 0.1);
+    border-style: dashed;
+}
+
+.value-item:hover, .drop-slot.drag-over {
+    background: #3B82F6;
+    border-color: #3B82F6;
+    color: #0D1321;
+    transform: scale(1.03);
+}
+
+/* Value Comparison */
+.comparison-interface .comparison-content {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: 8px;
+    color: #22D3EE;
+}
+
+.comparison-interface .comparison-input {
+    width: 100%;
+    min-height: 170px;
+    padding: 1.25rem;
+    background: #1F2A44;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    color: #E5E7EB;
+    resize: vertical;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+}
+
+.comparison-interface .comparison-input:focus {
+    border-color: #3B82F6;
+    outline: none;
+}
+
+/* Well Done */
+.well-done-interface p {
+    margin-top: 0.75rem;
+    color: #93C5FD;
+}
+
+/* Character Role Confirmation (Grand and Engaging) */
+.role-interface {
+    padding: 3.5rem;
+    background: linear-gradient(135deg, rgba(31, 42, 68, 0.95) 0%, rgba(16, 185, 129, 0.2) 100%);
+    border-color: #10B981;
+}
+
+.role-interface .character-name {
+    color: #10B981;
+    font-weight: 600;
+}
+
+.role-interface .role-message {
+    margin: 1.5rem 0;
+    font-size: 1.3rem;
+    color: #E5E7EB;
+    font-weight: 500;
+}
+
+.role-interface .role-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.role-interface .score-icon i {
+    color: #F59E0B;
+    font-size: 2rem;
+    animation: pulse 1.5s infinite;
+}
+
+.role-interface .score-text {
+    font-size: 1.8rem;
+    color: #F59E0B;
+    font-weight: 600;
+}
+
+/* Congratulations */
+.congrats-interface p {
+    margin-top: 0.75rem;
+    color: #93C5FD;
+    font-size: 1.25rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.fadeIn { animation: fadeIn 0.4s ease forwards; }
+.slideIn { animation: slideIn 0.4s ease forwards; }
+.animate-out { animation: fadeIn 0.4s ease reverse; }
