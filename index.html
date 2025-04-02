@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room 101: Interactive Lesson</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- System Boot Screen -->
+    <section class="loading-screen hidden">
+        <canvas id="boot-bg"></canvas>
+        <div class="boot-interface">
+            <h1><i class="fas fa-power-off"></i> Room 101 Initialisation</h1>
+            <p>System Booting...</p>
+        </div>
+    </section>
+
+    <!-- Party Login Screen (Computer Interface Style) -->
+    <section class="login-screen hidden">
+        <canvas id="login-bg"></canvas>
+        <div class="login-interface">
+            <header class="login-header">
+                <h1><i class="fas fa-terminal"></i> Party Login Terminal</h1>
+            </header>
+            <div class="login-terminal">
+                <pre class="terminal-output">
+> SYSTEM: PartyOS v1.9.8.4
+> AUTH: Initiating credential check...
+                </pre>
+                <div class="login-form">
+                    <div class="terminal-field">
+                        <span class="prompt">USER:</span> <span class="input">PARTY_MEMBER</span>
+                    </div>
+                    <div class="terminal-field">
+                        <span class="prompt">PASS:</span> <span class="input">****</span>
+                    </div>
+                    <p class="status">Authenticating...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Start -->
+    <section class="experience-start hidden">
+        <canvas id="particle-bg"></canvas>
+        <div class="start-interface">
+            <h1><i class="fas fa-door-open"></i> Welcome to Room 101</h1>
+            <p class="countdown">10</p>
+            <button class="action-btn start-btn">Begin Lesson</button>
+        </div>
+        <footer class="system-info">System Time: --:--:--</footer>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Character Selection -->
+    <section class="character-selection hidden">
+        <canvas id="particle-bg"></canvas>
+        <div class="selection-interface">
+            <h1><i class="fas fa-users"></i> Select Your Subject</h1>
+            <div class="character-grid">
+                <article class="character-card" data-character="winston-smith">
+                    <img src="https://i.postimg.cc/w1vd91Vc/Flux-Dev-A-highly-detailed-vintage-Orwellian-1984style-headsho-1.jpg" alt="Winston Smith">
+                    <h2>Winston Smith</h2>
+                </article>
+                <article class="character-card" data-character="obrien">
+                    <img src="https://i.postimg.cc/p95bn33m/Flux-Dev-A-highly-detailed-vintage-Orwellian-1984style-headsho-2.jpg" alt="O'Brien">
+                    <h2>O'Brien</h2>
+                </article>
+            </div>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Character Transition -->
+    <section class="character-transition hidden">
+        <canvas id="particle-bg"></canvas>
+        <div class="transition-interface">
+            <h1></h1>
+            <p>Subject Confirmed</p>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Instruction Screen -->
+    <section class="instruction-screen hidden">
+        <canvas id="particle-bg"></canvas>
+        <div class="instruction-interface">
+            <h1></h1>
+            <p></p>
+            <button class="action-btn next-btn">Proceed</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Quote Chambers (Enhanced Experience) -->
+    <section class="quote-chamber hidden" data-quote="1">
+        <canvas id="quote1-bg"></canvas>
+        <div class="quote-interface hidden">
+            <blockquote class="quote-text"></blockquote>
+        </div>
+        <div class="analysis-interface hidden">
+            <div class="analysis-container">
+                <h3 class="word-display"></h3>
+                <div class="meaning-arrows">
+                    <p class="breakdown-sentence"></p>
+                </div>
+            </div>
+        </div>
+        <div class="response-interface hidden">
+            <h2><i class="fas fa-comment-dots"></i> Your Insights</h2>
+            <textarea placeholder="Reflect on the quote and its key words..."></textarea>
+            <button class="action-btn next-btn">Next</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <section class="quote-chamber hidden" data-quote="2">
+        <canvas id="quote2-bg"></canvas>
+        <div class="quote-interface hidden">
+            <blockquote class="quote-text"></blockquote>
+        </div>
+        <div class="analysis-interface hidden">
+            <div class="analysis-container">
+                <h3 class="word-display"></h3>
+                <div class="meaning-arrows">
+                    <p class="breakdown-sentence"></p>
+                </div>
+            </div>
+        </div>
+        <div class="response-interface hidden">
+            <h2><i class="fas fa-comment-dots"></i> Your Insights</h2>
+            <textarea placeholder="Reflect on the quote and its key words..."></textarea>
+            <button class="action-btn next-btn">Next</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <section class="quote-chamber hidden" data-quote="3">
+        <canvas id="quote3-bg"></canvas>
+        <div class="quote-interface hidden">
+            <blockquote class="quote-text"></blockquote>
+        </div>
+        <div class="analysis-interface hidden">
+            <div class="analysis-container">
+                <h3 class="word-display"></h3>
+                <div class="meaning-arrows">
+                    <p class="breakdown-sentence"></p>
+                </div>
+            </div>
+        </div>
+        <div class="response-interface hidden">
+            <h2><i class="fas fa-comment-dots"></i> Your Insights</h2>
+            <textarea placeholder="Reflect on the quote and its key words..."></textarea>
+            <button class="action-btn next-btn">Next</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Tone Dissection -->
+    <section class="tone-dissection hidden">
+        <canvas id="tone-bg"></canvas>
+        <div class="tone-interface">
+            <h1><i class="fas fa-volume-up"></i> Tone Analysis</h1>
+            <blockquote class="tone-quote"></blockquote>
+            <div class="tone-controls">
+                <label>Bitterness: <input type="range" class="tone-slider" min="0" max="100"> <span>50%</span></label>
+                <label>Defiance: <input type="range" class="tone-slider" min="0" max="100"> <span>50%</span></label>
+                <label>Resignation: <input type="range" class="tone-slider" min="0" max="100"> <span>50%</span></label>
+            </div>
+            <textarea placeholder="Explain how these tones shape your subject..."></textarea>
+            <button class="action-btn submit-btn">Submit</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Tone Reflection -->
+    <section class="tone-reflection hidden">
+        <canvas id="reflection-bg"></canvas>
+        <div class="reflection-interface">
+            <h1><i class="fas fa-lightbulb"></i> Tone Reflection</h1>
+            <p class="reflection-content"></p>
+            <textarea placeholder="Reflect on how these tones reveal your subject’s mindset..."></textarea>
+            <button class="action-btn submit-btn">Submit</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Caste Pressure (Numbered Slots) -->
+    <section class="caste-pressure hidden">
+        <canvas id="caste-bg"></canvas>
+        <div class="pressure-interface">
+            <h1><i class="fas fa-bars"></i> Pressure Ranking</h1>
+            <p class="caste-scenario"></p>
+            <div class="pressure-container">
+                <div class="pressure-items">
+                    <div class="pressure-item" draggable="true">Surveillance</div>
+                    <div class="pressure-item" draggable="true">Obedience</div>
+                    <div class="pressure-item" draggable="true">Truth</div>
+                </div>
+                <div class="drop-zones">
+                    <div class="drop-slot" data-rank="1">1</div>
+                    <div class="drop-slot" data-rank="2">2</div>
+                    <div class="drop-slot" data-rank="3">3</div>
+                </div>
+            </div>
+            <textarea class="pressure-input" placeholder="Explain why you ranked these pressures this way..."></textarea>
+            <button class="action-btn submit-btn">Submit</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Value Hierarchy (Numbered Slots and Context) -->
+    <section class="value-hierarchy hidden">
+        <canvas id="value-bg"></canvas>
+        <div class="value-interface">
+            <h1><i class="fas fa-sitemap"></i> Value Ranking</h1>
+            <p class="character-name"></p>
+            <div class="value-container">
+                <div class="value-items">
+                    <div class="value-item" draggable="true">Freedom</div>
+                    <div class="value-item" draggable="true">Power</div>
+                    <div class="value-item" draggable="true">Reality</div>
+                </div>
+                <div class="drop-zones">
+                    <div class="drop-slot" data-rank="1">1</div>
+                    <div class="drop-slot" data-rank="2">2</div>
+                    <div class="drop-slot" data-rank="3">3</div>
+                </div>
+            </div>
+            <button class="action-btn submit-btn">Submit</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Value Comparison -->
+    <section class="value-comparison hidden">
+        <canvas id="comparison-bg"></canvas>
+        <div class="comparison-interface">
+            <h1><i class="fas fa-balance-scale"></i> Value Comparison</h1>
+            <p class="comparison-content"></p>
+            <textarea class="comparison-input" placeholder="Compare how these value rankings reflect different perspectives..."></textarea>
+            <button class="action-btn submit-btn">Submit</button>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Well Done -->
+    <section class="well-done hidden">
+        <canvas id="particle-bg"></canvas>
+        <div class="well-done-interface">
+            <h1><i class="fas fa-check-circle"></i> Lesson Progress</h1>
+            <p>Great work—ready for the final step!</p>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Character Role Confirmation (Grand and Engaging) -->
+    <section class="character-role hidden">
+        <canvas id="discussion-bg"></canvas>
+        <div class="role-interface">
+            <h1><i class="fas fa-user-tie"></i> Your Role: <span class="character-name"></span></h1>
+            <p class="role-message">You’ve earned 100/100! Step into the spotlight—you’ll need to embody this character for the next activity.</p>
+            <div class="role-score">
+                <span class="score-icon"><i class="fas fa-star"></i></span>
+                <span class="score-text">100/100</span>
+            </div>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <!-- Congratulations -->
+    <section class="congratulations hidden">
+        <canvas id="particle-bg"></canvas>
+        <div class="congrats-interface">
+            <h1><i class="fas fa-trophy"></i> Congratulations!</h1>
+            <p>You’ve mastered this Room 101 lesson.</p>
+        </div>
+        <div class="timer">3:30</div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
